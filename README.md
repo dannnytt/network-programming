@@ -1,5 +1,8 @@
 # 🌐 Network Programming
 
-## Laboratory works and courseworks description📄
+## [📄 Laboratory works and courseworks description](docs/network_prog.pdf)
 
-## Laboratory works📚🖥️
+
+## 🖥️ Laboratory works
+
+* Laboratory work #1 | [🖥️ Code](labs/lab1/)
