@@ -13,17 +13,18 @@ set(client_sources
     ${CMAKE_SOURCE_DIR}/client/src/udp_client_send_msg.c
     ${CMAKE_SOURCE_DIR}/client/src/udp_client_recv_msg.c
     ${CMAKE_SOURCE_DIR}/client/src/udp_client_destroy.c
+    ${CMAKE_SOURCE_DIR}/client/src/threads/udp_client_send_thread.c
+    ${CMAKE_SOURCE_DIR}/client/src/threads/udp_client_recv_thread.c
     ${CMAKE_SOURCE_DIR}/client/main.c
 )
 
 set(server_sources
     ${CMAKE_SOURCE_DIR}/server/src/udp_server_init.c
     ${CMAKE_SOURCE_DIR}/server/src/udp_server_run.c
-    ${CMAKE_SOURCE_DIR}/server/src/udp_server_recv_msg.c
-    ${CMAKE_SOURCE_DIR}/server/src/udp_server_send_msg.c
+    ${CMAKE_SOURCE_DIR}/server/src/udp_server_sendto.c
     ${CMAKE_SOURCE_DIR}/server/src/udp_server_destroy.c
-    ${CMAKE_SOURCE_DIR}/server/src/get_client_ip.c
-    ${CMAKE_SOURCE_DIR}/server/src/get_client_port.c
+    ${CMAKE_SOURCE_DIR}/server/src/udp_server_has_client.c
+    ${CMAKE_SOURCE_DIR}/server/src/udp_server_rm_client.c
     ${CMAKE_SOURCE_DIR}/server/main.c
 )
 

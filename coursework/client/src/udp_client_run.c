@@ -2,20 +2,12 @@
 
 void udp_client_run(udp_client_t *client) {
     
-    char message[1024], response[1024];
+    pthread_t recv_thread, send_thread;
+    
+    pthread_create(&recv_thread, NULL, udp_client_recv_thread, (void*)client);
+    pthread_create(&send_thread, NULL, udp_client_send_thread, (void*)client);
 
-    while (true) {
-
-        printf("(Клиент): ");
-        fgets(message, sizeof(message), stdin);
-        message[strcspn(message, "\n")] = '\0';
-
-        if (strcmp("exit", message) == 0) { 
-            udp_client_send_msg(client, message);
-            break;
-        }
-
-        udp_client_send_msg(client, message);
-        udp_client_recv_msg(client, response, sizeof(response));
-    }
+    pthread_join(send_thread, NULL);
+    pthread_cancel(recv_thread);
+    pthread_join(recv_thread, NULL);
 }

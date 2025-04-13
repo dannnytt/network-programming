@@ -11,7 +11,6 @@ void udp_server_init(udp_server_t *server, const char *ip_addr) {
     
     memset(&server->server_addr, 0, sizeof(server->server_addr));
     server->server_addr.sin_family = AF_INET;
-    // server->server_addr.sin_addr.s_addr = INADDR_ANY;
     server->server_addr.sin_port = 0;
 
     if (inet_pton(AF_INET, ip_addr, &server->server_addr.sin_addr) <= 0) {
@@ -33,6 +32,8 @@ void udp_server_init(udp_server_t *server, const char *ip_addr) {
         exit(EXIT_FAILURE);
 
     }
+
+    server->client_count = 0;
 
     printf("[Сервер запущен на %s:%d]\n", ip_addr, ntohs(server->server_addr.sin_port));
 }

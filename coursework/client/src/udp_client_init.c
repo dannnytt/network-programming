@@ -19,8 +19,8 @@ void udp_client_init(udp_client_t *client, const char *server_addr, uint16_t ser
         exit(EXIT_FAILURE);
     }
 
-    client->server_addr_len = sizeof(client->server_addr);
     
     printf("[Подключение к серверу %s:%d прошло успешно]\n", 
             server_addr, server_port);
+
 }
