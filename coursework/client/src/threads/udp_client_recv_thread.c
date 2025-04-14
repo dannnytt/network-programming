@@ -9,7 +9,14 @@ void* udp_client_recv_thread(void *arg) {
     while (true) {
 
         udp_client_recv_msg(client, buffer, sizeof(buffer));
-        printf("%s\n", buffer);
+        
+        sem_wait(&client->print_semaphore);
+        
+        printf("\r(Другой клиент) > %s\n", buffer);
+        printf("(Вы) > ");
+        fflush(stdout);
+        
+        sem_post(&client->print_semaphore);
     }
 
     return NULL;
