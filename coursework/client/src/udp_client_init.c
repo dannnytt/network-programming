@@ -23,4 +23,6 @@ void udp_client_init(udp_client_t *client, const char *server_addr, uint16_t ser
     printf("[Подключение к серверу %s:%d прошло успешно]\n", 
             server_addr, server_port);
 
+    sem_init(&client->print_semaphore, 0, 1);
+
 }

@@ -14,6 +14,7 @@
 typedef struct udp_client {
     int sockfd;
     struct sockaddr_in server_addr;
+    sem_t print_semaphore;
 
 } udp_client_t;
 

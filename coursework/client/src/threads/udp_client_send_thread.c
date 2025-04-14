@@ -6,6 +6,10 @@ void* udp_client_send_thread(void* arg) {
     char message[1024];
 
     while (true) {
+        sem_wait(&client->print_semaphore);
+        printf("(Вы) > ");
+        fflush(stdout);
+        sem_post(&client->print_semaphore);
 
         fgets(message, sizeof(message), stdin);
         message[strcspn(message, "\n")] = '\0';
